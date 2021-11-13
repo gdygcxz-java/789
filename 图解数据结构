@@ -1,0 +1,26 @@
+请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
+char* replaceSpace(char* s){
+    int i, j, len = strlen(s), cnt;
+    char *ans;
+
+    for (i = 0; i < len; i++) {
+        if (s[i] == ' ') {
+            cnt++;
+        }
+    }
+
+    ans = malloc(sizeof(char) * (len + cnt * 2 + 1));
+    j = 0;
+    for (i = 0; i < len; i++, j++) {
+        ans[j] = s[i];
+        if (s[i] == ' ') {
+            ans[j++] = '%';
+            ans[j++] = '2';
+            ans[j] = '0';
+        }
+    }
+
+    ans[j] = '\0';
+
+    return ans;
+}
